@@ -622,4 +622,12 @@ class ApmBasePipelineTest extends DeclarativePipelineTest {
       (callArgsToString(call) =~ pattern).count  == compare
     }
   }
+
+  def printCallStack(Closure body){
+    try {
+      body()
+    } finally {
+      printCallStack()
+    }
+  }
 }
